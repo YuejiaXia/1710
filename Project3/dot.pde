@@ -2,7 +2,7 @@ class Dot {
   
   PVector position, target;
   color col;
-  float spped;
+  float speed;
   float dotSize;
   
   Dot(float x, float y, color _col){
@@ -11,11 +11,14 @@ class Dot {
     col = _col;
     
     float b = brightness(col) / 255;
+    speed = b / 1000;
     dotSize = abs(10 - (b * 10)) + 2;
   }
  
  void update() {
+   position.lerp(target, speed);
  }
+
  
  void draw() {
  stroke(col);
